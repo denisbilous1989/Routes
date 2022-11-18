@@ -1,0 +1,16 @@
+.details {
+  width: 30%;
+  border: 2px solid brown;
+  padding: 20px;
+  margin: 0 auto;
+  background: #ccc;
+  border-radius: 10px;
+
+  p {
+    font-weight: bold;
+
+    span {
+      font-weight: normal;
+    }
+  }
+}
