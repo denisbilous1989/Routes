@@ -7,6 +7,7 @@ const Home = () => {
     <>
     <nav>
         <p>Click on the link to display <Link to="/users">Users</Link> information</p>
+        <p>Click on the link to add <Link to="/posts">New post</Link> information</p>
     </nav>
     </>
   )
