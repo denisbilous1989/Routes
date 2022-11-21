@@ -15,7 +15,7 @@ import './style.scss'
 const Posts =() => {
 
   const onSubmit = (values, actions) => {
-    console.log(values, 'values');
+    // console.log(values, 'values');
   
   
     fetch('https://jsonplaceholder.typicode.com/posts', {
