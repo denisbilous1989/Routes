@@ -3,6 +3,7 @@ import { Form, Formik } from 'formik';
 
 import validateSchema from '../../schemas'
 
+
 import CustomInput from './CustomInput/component';
 import CustomSelect from './CustomSelect/component';
 import CustomTextarea from './CustomTextarea/component';
@@ -10,24 +11,26 @@ import CustomTextarea from './CustomTextarea/component';
 import './style.scss'
 
 
-const onSubmit = (values, actions) => {
-  console.log(values, 'values');
-
-  fetch('https://js1onplaceholder.typicode.com/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    })
-     .then(res => res.json())
-     .then(data => console.log('data', data))
-     .catch(error => console.log(error, 'error'))
-  actions.resetForm();
-}
-
 
 const Posts =() => {
+
+  const onSubmit = (values, actions) => {
+    console.log(values, 'values');
+  
+  
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+       .then(res => res.json())
+       .then(data => console.log('data', data))
+       .catch(error => console.log(error));
+
+    actions.resetForm();
+  }
 
   return (
     <Formik initialValues={{ 
@@ -72,6 +75,7 @@ const Posts =() => {
          </Form>
        )}
      </Formik>
+     
   )
 }
 
