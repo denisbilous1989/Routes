@@ -1,23 +1,24 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
+import { useState } from "react";
 
 import validateSchema from '../../schemas'
 
 
-import CustomInput from './CustomInput/component';
-import CustomSelect from './CustomSelect/component';
-import CustomTextarea from './CustomTextarea/component';
+import CustomInput from './CustomInput';
+import CustomSelect from './CustomSelect';
+import CustomTextarea from './CustomTextarea';
+import Post from './Post';
 
 import './style.scss'
 
 
-
 const Posts =() => {
 
+  const [posts, setPosts] = useState([]);
+
   const onSubmit = (values, actions) => {
-    // console.log(values, 'values');
-  
-  
+
     fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: {
@@ -26,13 +27,15 @@ const Posts =() => {
         body: JSON.stringify(values),
       })
        .then(res => res.json())
-       .then(data => console.log('data', data))
+       .then(data => setPosts([...posts, data]))
        .catch(error => console.log(error));
+
 
     actions.resetForm();
   }
 
   return (
+    <>
     <Formik initialValues={{ 
       title: '',
       body: '',
@@ -75,7 +78,20 @@ const Posts =() => {
          </Form>
        )}
      </Formik>
-     
+     {posts.length === 0 ? <div>Empty list</div> : 
+     <ul className='cards'>
+        {posts.map(({ userId, title, body }) => (
+          <Post 
+            key={userId}
+            className='card-item'
+            title={title}
+            body={body}
+            userId={userId}
+          />
+        ))}
+      </ul>
+     }
+     </>
   )
 }
 

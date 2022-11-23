@@ -27,3 +27,12 @@ form {
     text-align: left;
   }
 }
+
+.cards {
+  margin-top: 20px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
