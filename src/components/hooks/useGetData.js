@@ -14,12 +14,13 @@ const useGetData = (url, deps=[]) => {
     .catch(setError)
     .finally(() => setLoading(false));
   }, deps)
-  
+
   return {
     data,
     error,
     loading,
   }
 }
+
 
 export default useGetData;

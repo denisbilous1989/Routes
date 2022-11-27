@@ -23,6 +23,7 @@ const Users = () => {
 
   return (
     <>
+    <h1>Users Information</h1>
     <ul className='cards'>
       {data.map(({id, name }) => (
         <li 
